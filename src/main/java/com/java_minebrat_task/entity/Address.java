@@ -44,6 +44,9 @@ public class Address {
     @Column(length = 100)
     private String country;
 
+    @Column(length = 200)
+    private String street;
+
     @CreationTimestamp
     private Instant createdAt;
 
