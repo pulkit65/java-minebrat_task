@@ -1,9 +1,19 @@
 package com.java_minebrat_task.entity;
 
-    @Entity
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.Instant;
+import java.util.UUID;
+
+@Entity
     @Table(name = "audit_logs")
-    @Getter @Setter
-    @NoArgsConstructor @AllArgsConstructor @Builder
+    @Getter
+@Setter
+    @NoArgsConstructor
+@AllArgsConstructor
+@Builder
     public class AuditLog {
 
         @Id
