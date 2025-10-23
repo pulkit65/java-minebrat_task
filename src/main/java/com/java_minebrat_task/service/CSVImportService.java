@@ -3,6 +3,8 @@ package com.java_minebrat_task.service;
 
 import com.java_minebrat_task.dto.CsvImportResult;
 import com.java_minebrat_task.entity.User;
+import com.java_minebrat_task.repository.AuditLogRepository;
+import com.java_minebrat_task.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.csv.*;
 import org.springframework.stereotype.Service;
@@ -14,7 +16,7 @@ import java.util.*;
 
 @Service
 @RequiredArgsConstructor
-public class CsvImportService {
+public class CSVImportService {
 
     private final UserRepository userRepo;
     private final AuditLogRepository auditRepo;

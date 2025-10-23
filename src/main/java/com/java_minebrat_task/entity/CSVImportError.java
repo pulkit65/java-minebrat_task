@@ -8,7 +8,7 @@ import java.util.UUID;
 @Table(name = "csv_import_errors")
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor @Builder
-public class CsvImportError {
+public class CSVImportError {
 
     @Id
     @GeneratedValue
@@ -16,7 +16,7 @@ public class CsvImportError {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "import_job_id", nullable = false)
-    private CsvImportJob importJob;
+    private CSVImportJob importJob;
 
     @Column(nullable = false)
     private int rowNumber;

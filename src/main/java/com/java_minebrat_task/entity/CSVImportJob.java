@@ -11,7 +11,7 @@ import java.util.*;
 @Table(name = "csv_import_jobs")
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor @Builder
-public class CsvImportJob {
+public class CSVImportJob {
 
     @Id
     @GeneratedValue
@@ -33,6 +33,6 @@ public class CsvImportJob {
     private Instant completedAt;
 
     @OneToMany(mappedBy = "importJob", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CsvImportError> errors = new ArrayList<>();
+    private List<CSVImportError> errors = new ArrayList<>();
 }
 

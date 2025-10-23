@@ -2,7 +2,7 @@ package com.java_minebrat_task.controller;
 
 
 import com.java_minebrat_task.dto.CsvImportResult;
-import com.java_minebrat_task.service.CsvImportService;
+import com.java_minebrat_task.service.CSVImportService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +13,9 @@ import java.security.Principal;
 @RestController
 @RequestMapping("/api/v1/users/import")
 @RequiredArgsConstructor
-public class CsvImportController {
+public class CSVImportController {
 
-    private final CsvImportService importService;
+    private final CSVImportService importService;
 
     @PostMapping
     public ResponseEntity<CsvImportResult> importUsers(@RequestParam("file") MultipartFile file,
