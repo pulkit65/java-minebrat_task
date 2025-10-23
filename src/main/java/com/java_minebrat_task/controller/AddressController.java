@@ -3,6 +3,7 @@ package com.java_minebrat_task.controller;
 import com.java_minebrat_task.entity.Address;
 import com.java_minebrat_task.service.AddressService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,26 @@ import java.util.UUID;
 public class AddressController {
 
     private final AddressService addressService;
+
+    /**
+     * Get all addresses with optional filters
+     */
+    @GetMapping
+    public ResponseEntity<Page<Address>> getAllAddresses(
+            @RequestParam(required = false) String city,
+            @RequestParam(required = false) String state,
+            @RequestParam(required = false) String country,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "city,asc") String[] sort) {
+
+        Sort sortOrder = Sort.by(Sort.Order.by(sort[0])
+                .with(sort.length > 1 && sort[1].equalsIgnoreCase("desc") ? Sort.Direction.DESC : Sort.Direction.ASC));
+        Pageable pageable = PageRequest.of(page, size, sortOrder);
+
+        Page<Address> addresses = addressService.getAllAddresses(city, state, country, pageable);
+        return ResponseEntity.ok(addresses);
+    }
 
     /**
      * Get address by ID
